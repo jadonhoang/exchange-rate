@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Currency Exchange Rate</title>
+    <link rel="stylesheet" href="./css/site.css"/>
+</head>
+
+<body>
+    <div class="NavBar">
+        
+        <div class="base-currency-dropdown">
+            <button class="dropbtn" id="baseButton">Base Currency: EUR</button>
+            <div class="dropdown-content-base" id="baseDropDown">
+                
+            </div>
+        </div>
+        
+        
+
+        <div class="conversion-dropdown">
+            <button onClick="showConversionDropDown(); doFetchConvert()" class="dropbtn" id="convertButton">Convert to:</button>
+            <div class="dropdown-content-convert" id="conversionDropDown">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="MainContent" id="maincontent">
+        
+    </div>
+    
+
+    <script src="js/main.js"></script>
+</body>
+
+
+</html>
+
+<!-- 
+
+Taking the exchange rate as of 11/4/2021
+
+doing this to calculate the height of the bar charts so the height is based on the highest exchange rate
+
+EUR: 1/1.000 = 1.00     1.00 * 100 = 100%
+
+USD: 1.15475 = 0.86     0.86 * 100 = 86%
+
+AUD : 1/1.561517 = 0.644    0.644 * 100 = 64.4 %
+
+GBP : 1/0.856055    0.856055 * 100 = 85.6%
+
+NZD: 1.625103       1.625 * 100 = 162.5 %
+
+
+
+-->
