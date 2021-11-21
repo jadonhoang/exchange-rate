@@ -6,7 +6,9 @@ function showConversionDropDown() {
 
 
 function doFetchConvert() {
-    fetch('http://api.exchangeratesapi.io/v1/latest?access_key=f58d57ee49a2e5f691b3e5bcfd94f338&format=1')
+    fetch('http://api.exchangeratesapi.io/v1/latest?access_key=f58d57ee49a2e5f691b3e5bcfd94f338&format=1', {
+        mode: 'no-cors'
+    })
     .then(response => response.json())
     .then(jsonData => {
         let output = document.querySelector('#conversionDropDown');
@@ -40,34 +42,36 @@ function selectConversionCurrency(clicked_id) {
     removeDuplicate(conversionCurrencies);
     
 
-    fetch('http://api.exchangeratesapi.io/v1/latest?access_key=f58d57ee49a2e5f691b3e5bcfd94f338&format=1')
-        .then(response => response.json())
-        .then(jsonData => {  
-            for(let conversionCurrency of conversionCurrencies) {
+    fetch('http://api.exchangeratesapi.io/v1/latest?access_key=f58d57ee49a2e5f691b3e5bcfd94f338&format=1', {
+        mode: 'no-cors'
+    })
+    .then(response => response.json())
+    .then(jsonData => {  
+        for(let conversionCurrency of conversionCurrencies) {
 
-                buttonColor = document.getElementById(conversionCurrency);
-                numbers.push(jsonData['rates'][conversionCurrency]);
-                max = Math.max.apply(null, numbers)
+            buttonColor = document.getElementById(conversionCurrency);
+            numbers.push(jsonData['rates'][conversionCurrency]);
+            max = Math.max.apply(null, numbers)
 
-                if(conversionCurrencies.includes(conversionCurrency)) {
-                    console.log('turning green:', conversionCurrency);
-                    console.log('currencyName: ', currencyName)
+            if(conversionCurrencies.includes(conversionCurrency)) {
+                console.log('turning green:', conversionCurrency);
+                console.log('currencyName: ', currencyName)
 
-                    buttonColor.style.background = 'lightgreen';
-                    let height = (1 / jsonData['rates'][conversionCurrency]) * 100;
-                    let chart = document.createElement('div');
-                    content.appendChild(chart);
-                    chart.setAttribute('class', 'BarChart-bar')
-                    chart.setAttribute('onClick', "alert('1 EUR = " + jsonData['rates'][conversionCurrency] + " " + conversionCurrency + "')");
-                    chart.setAttribute('style', "height: calc(" + height + "%/" + max + ")");
-                    chart.innerHTML += conversionCurrency;
+                buttonColor.style.background = 'lightgreen';
+                let height = (1 / jsonData['rates'][conversionCurrency]) * 100;
+                let chart = document.createElement('div');
+                content.appendChild(chart);
+                chart.setAttribute('class', 'BarChart-bar')
+                chart.setAttribute('onClick', "alert('1 EUR = " + jsonData['rates'][conversionCurrency] + " " + conversionCurrency + "')");
+                chart.setAttribute('style', "height: calc(" + height + "%/" + max + ")");
+                chart.innerHTML += conversionCurrency;
 
 
-                } 
+            } 
 
-                console.log("1", currency[0], "=", jsonData['rates'][conversionCurrency], conversionCurrency);        
-            }
-        });
+            console.log("1", currency[0], "=", jsonData['rates'][conversionCurrency], conversionCurrency);        
+        }
+    });
 
 
 
