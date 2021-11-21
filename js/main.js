@@ -6,7 +6,7 @@ function showConversionDropDown() {
 
 
 function doFetchConvert() {
-    fetch('http://api.exchangeratesapi.io/v1/latest?access_key=f58d57ee49a2e5f691b3e5bcfd94f338&format=1')
+    fetch('https://api.exchangeratesapi.io/v1/latest?access_key=f58d57ee49a2e5f691b3e5bcfd94f338&format=1')
     .then(response => response.json())
     .then(jsonData => {
         let output = document.querySelector('#conversionDropDown');
@@ -40,7 +40,7 @@ function selectConversionCurrency(clicked_id) {
     removeDuplicate(conversionCurrencies);
     
 
-    fetch('http://api.exchangeratesapi.io/v1/latest?access_key=f58d57ee49a2e5f691b3e5bcfd94f338&format=1')
+    fetch('https://api.exchangeratesapi.io/v1/latest?access_key=f58d57ee49a2e5f691b3e5bcfd94f338&format=1')
         .then(response => response.json())
         .then(jsonData => {  
             for(let conversionCurrency of conversionCurrencies) {
